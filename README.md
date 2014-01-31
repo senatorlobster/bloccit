@@ -1,6 +1,8 @@
-# Bloccit
+# Lobster Bloccit
 
 A Reddit-style application to demonstrate foundation programming and web development skills.
+
+The latest deployed version of this application is hosted [here](http://lobster-bloccit.herokuapp.com/)
 
 Made with my mentor at [Bloc](http://bloc.io)
 
