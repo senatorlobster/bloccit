@@ -1,6 +1,8 @@
 <h1><%= @post.title %></h1>
 
-<%= link_to "Edit", edit_post_path(@post), class: 'btn btn-default btn-xs' %>
+<% if can? :edit, @post %>
+  <%= link_to "Edit", edit_post_path(@post), class: 'btn btn-default btn-xs' %>
+<% end %>
 
 <p><%= @post.body %></p>
 

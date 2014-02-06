@@ -51,6 +51,8 @@ gem 'devise'
 # Use AppSignal for errr monitoring.
 gem 'appsignal'
 
+# Use Cancan for user authorization.
+gem 'cancan'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
