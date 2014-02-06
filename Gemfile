@@ -48,6 +48,9 @@ end
 # Use Device for authentication
 gem 'devise'
 
+# Use AppSignal for errr monitoring.
+gem 'appsignal'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
