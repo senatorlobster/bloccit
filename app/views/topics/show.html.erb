@@ -1,0 +1,33 @@
+<h1><%= @topic.name %></h1>
+
+<!-- Bloc uses 'if can? :update' here instead of ':edit',
+     but I think it make more sense to use :edit.
+-->
+<% if can? :edit, @topic %>
+  <%= link_to "Edit Topic", edit_topic_path(@topic), class: 'btn btn-default btn-xs' %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-8">
+    <p class="lead"><%= @topic.description %></p>
+
+    <% @posts.each do |post| %>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= link_to post.title, [@topic, post] %>
+          </h4>
+          <small>
+            submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %><br/>
+            <%= post.comments.count %> Comments
+          </small>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-4">
+    <% if can? :create, Post %>
+      <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-default btn-lg btn-block' %>
+    <% end %>
+  </div>
+</div>
