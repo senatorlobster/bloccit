@@ -45,7 +45,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use Device for authentication
+# Use Devise for authentication
 gem 'devise'
 
 # Use AppSignal for errr monitoring.
@@ -59,6 +59,18 @@ gem 'simple_form'
 
 # Use Redcarpet to enable Markdown in posts.
 gem 'redcarpet'
+
+# Use Carrierwave to upload images.
+gem 'carrierwave'
+
+# Use MiniMagick to manipulate images.
+gem 'mini_magick'
+
+# Use Fog as cloud services library to support S3.
+gem 'fog'
+
+# Use Figaro for handling credentials.
+gem 'figaro'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

@@ -6,6 +6,9 @@ The latest deployed version of this application is hosted [here](http://lobster-
 
 Made with my mentor at [Bloc](http://bloc.io)
 
+## Setup
+Copy the "config/application.example.yml" file and remove "example". Your application.yml should contain your sensitive credentials. It should be included in .gitnore as well.
+
 == README
 
 This README would normally document whatever steps are necessary to get the

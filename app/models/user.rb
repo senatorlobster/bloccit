@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   before_create :set_member
 
+  mount_uploader :avatar, AvatarUploader
+
   ROLES = %w[member moderator admin]
   def role?(base_role)
     role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(role)
