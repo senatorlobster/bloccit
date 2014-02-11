@@ -57,6 +57,9 @@ gem 'cancan'
 # Use Simple Form for forms.
 gem 'simple_form'
 
+# Use Redcarpet to enable Markdown in posts.
+gem 'redcarpet'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
