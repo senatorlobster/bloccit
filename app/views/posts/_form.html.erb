@@ -14,6 +14,16 @@
   <%= p.input :body, input_html: { rows: 8 } %>
 
   <div class="form-group">
+    <%= p.label :post_image, 'Image', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= image_tag(post.post_image.thumb.url, class: 'img-thumbnail') if post.post_image? %>
+      <!-- I purposely left the class: 'form-control' tag out of the below line.
+      Formatting on the file input button seems to look better without it. -->
+      <%= p.file_field :post_image %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= p.button :submit, 'Save', class: 'btn btn-primary' %>
     </div>

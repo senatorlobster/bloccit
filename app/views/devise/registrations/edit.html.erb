@@ -53,7 +53,7 @@
   <div class="form-group">
     <%= f.label :avatar, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-      <%= image_tag(current_user.avatar.small.url) if current_user.avatar? %>
+      <%= image_tag(current_user.avatar.small.url, class: 'img-thumbnail') if current_user.avatar? %>
       <!-- I purposely left the class: 'form-control' tag out of the below line.
       Formatting on the file input button seems to look better without it. -->
       <%= f.file_field :avatar %>

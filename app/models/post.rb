@@ -5,6 +5,8 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :topic
 
+  mount_uploader :post_image, PostImageUploader
+
   default_scope order('created_at DESC')
 
   validates :title, length: { minimum: 5 }, presence: true
