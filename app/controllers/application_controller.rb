@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
+  def handle_unverified_request
+    redirect_to new_user_session_url, :alert => "You need to be signed in to do that."
+  end
+
   # Get Devise working with Strong Parameters so that 
   # extra fields- beyond email and password- work in 
   # user registration forms.

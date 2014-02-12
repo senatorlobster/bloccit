@@ -1,0 +1,10 @@
+<div class="media">
+  <div class="media-body">
+    <p><%= comment.body %></p>
+    <small>
+      <%= image_tag(comment.user.avatar.tiny.url, class: 'img-thumbnail') if comment.user.avatar? %>
+      submitted <%= time_ago_in_words(comment.created_at) %> ago by 
+      <%= comment.user.name %>
+    </small>
+  </div>
+</div>

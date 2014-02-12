@@ -8,7 +8,7 @@
 
 require 'faker'
 
-# Create 15 topics
+# Create 25 topics
 topics = []
 25.times do
   topics << Topic.create(
@@ -16,6 +16,11 @@ topics = []
     description: Faker::Lorem.paragraph(rand(1..4))
   )
 end
+
+# Create empty users and comments arrays so that comments 
+# can be associated with users after they're created.
+users = []
+comments = []
 
 rand(4..10).times do
   password = Faker::Lorem.characters(10)
@@ -26,13 +31,14 @@ rand(4..10).times do
     password_confirmation: password)
   u.skip_confirmation!
   u.save
+  users << u
 
   # Note: by calling `User.new` instead of `create`,
   # we create an instance of a user which isn't saved to the database.
   # The `skip_confirmation!` method sets the confirmation date
   # to avoid sending an email. The `save` method updates the database.
 
-  rand(5..122).times do
+  rand(5..22).times do
     topic = topics.first # getting the first topic here
     p = u.posts.create(
       topic: topic,
@@ -47,10 +53,17 @@ rand(4..10).times do
 
     # associate comments with the post
     rand(3..7).times do
-      p.comments.create(
+      comments << p.comments.create(
         body: Faker::Lorem.paragraphs(rand(1..2)).join("\n"))
     end
   end
+end
+
+# associate each comment with a user
+
+comments.each do |c|
+  u = users.sample
+  c.update_attribute(:user, u)
 end
 
 u = User.new(

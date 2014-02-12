@@ -9,6 +9,12 @@
     </small> 
     <p><%= markdown @post.body %></p>
     <p><%= image_tag(@post.post_image.url, class: 'img-rounded') if @post.post_image? %></p>
+
+    <% if can? :create, Comment %>
+      <%= render partial: "comments/form", locals: { topic: @topic, post: @post, comment: @comment } %>
+    <% end %>
+
+    <%= render partial: "posts/comment", collection: @comments %>
   </div>
   <div class="col-md-4">
     <% if can? :edit, @post %>
