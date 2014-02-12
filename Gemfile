@@ -72,6 +72,9 @@ gem 'fog'
 # Use Figaro for handling credentials.
 gem 'figaro'
 
+# Use kaminari for pagination
+gem 'kaminari'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

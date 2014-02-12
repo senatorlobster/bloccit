@@ -4,7 +4,8 @@ class TopicsController < ApplicationController
   # At this point, any user can create any topic.
 
   def index
-    @topics = Topic.all
+    # @topics = Topic.all
+    @topics = Topic.page(params[:page]).per(10)
   end
 
   def new
@@ -14,7 +15,8 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    @posts = @topic.posts
+    # @posts = @topic.posts
+    @posts = @topic.posts.page(params[:page]).per(10)
   end
 
   def edit
