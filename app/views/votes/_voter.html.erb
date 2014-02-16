@@ -1,0 +1,20 @@
+<% if can? :create, Vote %>
+  <div class="vote-arrows pull-left">
+    <div>
+      <%= link_to " ", topic_post_up_vote_path(topic, post), class: 'glyphicon glyphicon-chevron-up' %>
+    </div>
+    <div><strong><%= post.points %></strong></div>
+    <div><%= link_to " ", topic_post_down_vote_path(topic, post), class: 'glyphicon glyphicon-chevron-down' %></div>
+  </div>
+<% end %>
+
+<!--
+***The line below needs a '%' between the '<' and the '='.
+<= link_to deals_path, class: "btn btn-default" do %>
+    <i class="glyphicon glyphicon-euro">Dashboard</i>
+***The line below needs a '%' between the '<' and the '='.
+< end %>
+
+***The line below needs a '%' between the '<' and the '='.
+<= link_to glyph(:remove), '#', :class => "btn btn-danger" %>
+-->

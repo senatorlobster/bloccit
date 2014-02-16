@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook]
   has_many :posts
   has_many :comments
+  has_many :votes, dependent: :destroy
 
   before_create :set_member
 
