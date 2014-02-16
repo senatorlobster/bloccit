@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
+  def after_sign_in_path_for(resource)
+    topics_path
+  end
+
   def handle_unverified_request
     redirect_to new_user_session_url, :alert => "You need to be signed in to do that."
   end
@@ -21,6 +25,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:account_update) << :name << :avatar
+    devise_parameter_sanitizer.for(:sign_up) << :name
   end
 
 end

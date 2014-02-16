@@ -13,8 +13,13 @@ class Comment < ActiveRecord::Base
   private
 
   def send_favorite_emails
+    # for every favorite associated with post, send email
     self.post.favorites.each do |favorite|
-      FavoriteMailer.new_comment(favorite.user, self.post, self).deliver
+      # check that the user who receives the email is different than the user creating the comment
+      # also check that the user who receives the email has their permissions set to receive emails
+      if favorite.user_id != self.user_id && favorite.user.email_favorites?
+        FavoriteMailer.new_comment(favorite.user, self.post, self).deliver
+      end
     end
   end
 end
