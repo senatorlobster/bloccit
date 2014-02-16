@@ -5,7 +5,8 @@ class TopicsController < ApplicationController
 
   def index
     # @topics = Topic.all
-    @topics = Topic.page(params[:page]).per(10)
+    # @topics = Topic.page(params[:page]).per(10)
+    @topics = Topic.visible_to(current_user).page(params[:page]).per(10)
   end
 
   def new
@@ -15,6 +16,7 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
+    authorize! :read, @topic, message: "You need to be signed-in to do that."
     # @posts = @topic.posts
     @posts = @topic.posts.page(params[:page]).per(10)
   end

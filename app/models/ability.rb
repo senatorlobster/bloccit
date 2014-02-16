@@ -14,6 +14,7 @@ class Ability
       can :manage, Comment, :user_id => user.id
       can :create, Vote
       can :manage, Favorite, user_id: user.id
+      can :read, Topic
     end
 
     # Moderators can delete any post
@@ -27,6 +28,9 @@ class Ability
       can :manage, :all
     end
 
-    can :read, :all
+    # Non-signed-in users can read public topics and posts
+    # can :read, :all
+    can :read, Topic, public: true
+    can :read, Post
   end
 end
