@@ -14,6 +14,7 @@
       <%= render partial: "comments/form", locals: { topic: @topic, post: @post, comment: @comment } %>
     <% end %>
 
+    <!-- Bloc has this form in comments/comment. -->
     <%= render partial: "posts/comment", collection: @comments %>
   </div>
   <div class="col-md-4">

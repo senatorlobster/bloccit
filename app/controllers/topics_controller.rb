@@ -18,7 +18,9 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     authorize! :read, @topic, message: "You need to be signed-in to do that."
     # @posts = @topic.posts
-    @posts = @topic.posts.page(params[:page]).per(10)
+    # @posts = @topic.posts.page(params[:page]).per(10) # same as below, but without eager loading
+    # @posts = @topic.posts.includes(:user).page(params[:page]).per(10) # uses eager loading for users
+    @posts = @topic.posts.includes(:user).includes(:comments).page(params[:page]).per(10)  # uses eager loading for users and comments
   end
 
   def edit
