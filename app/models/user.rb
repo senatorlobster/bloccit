@@ -50,8 +50,26 @@ class User < ActiveRecord::Base
     self.favorites.where(post_id: post.id).first
   end
 
+  # Use voted(post) with _voter.html.erb
   def voted(post)
     self.votes.where(post_id: post.id).first
+  end
+
+  # Use redis_voted(post) with _redis_voter.html.erb
+  def redis_voted(post)
+    REDIS.sismember "user:#{self.id}:voted_posts", post.id
+  end
+
+  # Return the number of posts that this user has voted on.
+  def redis_user_points
+    x = REDIS.get "user:#{self.id}:total_votes"
+    x.to_i
+  end
+
+  # Return all posts that have been redis_voted by this user.
+  def redis_voted_posts
+    voted_post_ids = REDIS.smembers "user:#{self.id}:voted_posts"
+    Post.where(id: voted_post_ids)
   end
 
   private

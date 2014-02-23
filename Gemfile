@@ -78,6 +78,9 @@ gem 'kaminari'
 # Use OmniAuth to allow facebook authentication.
 gem 'omniauth-facebook'
 
+# Use Redis for Voting functionality.
+gem 'redis'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

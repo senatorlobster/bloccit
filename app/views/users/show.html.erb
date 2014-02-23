@@ -8,7 +8,8 @@
         <h2 class="media-heading"><%= @user.name %></h2>
         <small>
           <%= pluralize(@user.posts.count, 'post') %>,
-          <%= pluralize(@user.comments.count, 'comment') %>
+          <%= pluralize(@user.comments.count, 'comment') %>,
+          <%= pluralize(@user.redis_user_points, 'vote') %>
         </small>
       </div>
     </div>
@@ -22,6 +23,7 @@
     <ul class="col-xs-2 nav nav-tabs">
       <li class="active"><a href="#posts" data-toggle="tab">Posts</a></li>
       <li><a href="#comments" data-toggle="tab">Comments</a></li>
+      <li><a href="#votes" data-toggle="tab">Votes</a></li>
     </ul>
     <div class="col-xs-9 tab-content">
       <div class="tab-pane active" id="posts">
@@ -29,6 +31,9 @@
       </div>
       <div class="tab-pane" id="comments">
         <%= render partial: "posts/comment", collection: @user.comments %>
+      </div>
+      <div class="tab-pane" id="votes">
+        <%= render partial: "posts/post", collection: @user.redis_voted_posts %>
       </div>
     </div>
   </div>

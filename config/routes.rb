@@ -10,8 +10,12 @@ Bloccit::Application.routes.draw do
     resources :posts, except: [:index], controller: 'topics/posts' do
       resources :comments, only: [:create, :destroy]
 
+      # These gets are used for the original _voter.html.erb form, using up and down votes
       get '/up-vote', to: 'votes#up_vote', as: :up_vote
       get '/down-vote', to: 'votes#down_vote', as: :down_vote
+
+      # This get is used for the new _redis_voter.html.erb form to toggle votes with Redis
+      get '/toggle-vote', to: 'votes#toggle_vote', as: :toggle_vote
 
       resources :favorites, only: [:create, :destroy]
     end

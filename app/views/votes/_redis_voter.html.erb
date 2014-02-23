@@ -1,0 +1,12 @@
+<% if can? :create, Vote %>
+  <div class="vote-arrows pull-left">
+    <div>
+      <%= link_to " ",
+        topic_post_toggle_vote_path(topic, post),
+        class: "glyphicon glyphicon-thumbs-up #{current_user.redis_voted(post) ? 'voted' : '' }" %>
+    </div>
+    <div>
+      <strong><%= post.redis_post_points %></strong>
+    </div>
+  </div>
+<% end %>

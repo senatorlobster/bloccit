@@ -8,6 +8,9 @@
 
 require 'faker'
 
+# Clear Redis data store to reset sets and variables.
+REDIS.flushdb
+
 # Create 25 topics
 topics = []
 25.times do
@@ -49,7 +52,8 @@ rand(4..10).times do
     p.update_attribute(:created_at, Time.now - rand(600..31536000))
 
     # update the rank of the post, based on the time it was created
-    p.update_rank
+    # p.update_rank
+    p.update_redis_rank
 
     # move the first topic to the last so that posts get assigned to different topics
     topics.rotate!

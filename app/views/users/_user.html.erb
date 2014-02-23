@@ -7,8 +7,8 @@
       <%= link_to user.name, user %>
     </h4>
     <small>
-      <%= pluralize(user.posts_count, 'post') %>,
-      <%= pluralize(user.comments_count, 'comment') %>
+      <%= pluralize(user.posts.count, 'post') %>,
+      <%= pluralize(user.comments.count, 'comment') %>
     </small>
   </div>
 </div>
