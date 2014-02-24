@@ -15,3 +15,28 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+// $(document).ready(function() {
+//   $(".js-add-comment").click(function() {
+//     if ($(".js-new-comment").is(":visible")) {
+//       $(".js-new-comment").slideUp();
+//     }
+//     else {
+//       $(".js-new-comment").slideDown();
+//     }
+//     return false;
+//   });
+// });
+
+$(document).ready(function() {
+  $(".js-show-hide").click(function() {
+    var selector = "." + $(this).attr('data-selector');
+    if ($(selector).is(":visible")) {
+      $(selector).slideUp();
+    }
+    else {
+      $(selector).slideDown();
+    }
+    return false;
+  });
+});

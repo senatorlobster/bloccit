@@ -11,7 +11,14 @@
     <p><%= image_tag(@post.post_image.url, class: 'img-rounded') if @post.post_image? %></p>
 
     <% if can? :create, Comment %>
-      <%= render partial: "comments/form", locals: { topic: @topic, post: @post, comment: @comment } %>
+      <hr/>
+
+      <a href="#" class="js-show-hide" data-selector="js-new-comment">Add Comment</a>
+      <br/>
+      <div class="js-new-comment notvisible">
+        <h4>New Comment</h4>
+        <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
+      </div>
     <% end %>
 
     <!-- Bloc has this form in comments/comment. -->
