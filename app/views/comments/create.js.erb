@@ -1,0 +1,9 @@
+// app/views/comments/create.js.erb
+
+<% if @comment.valid? %>
+  $(".js-comments").prepend("<%= escape_javascript(render partial: 'posts/comment', collection: @comments) %>");
+  $(".js-new-comment").html("<%= escape_javascript(render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @new_comment }) %>");
+  $('.js-comments-count').html("<%= @post.comments.count %> Comments");
+<% else %>
+  $(".js-new-comment").html("<%= escape_javascript(render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment }) %>");
+<% end %>

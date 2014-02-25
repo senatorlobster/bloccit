@@ -23,8 +23,10 @@
 
     <h2 class='js-comments-count'><%= @comments.count %> Comments</h2>
 
-    <!-- Bloc has this form in comments/comment. -->
-    <%= render partial: "posts/comment", collection: @comments %>
+    <div class="js-comments">  
+      <!-- Bloc has this form in comments/comment. -->
+      <%= render partial: "posts/comment", collection: @comments %>
+    </div>
   </div>
   <div class="col-md-4">
     <% if can? :edit, @post %>
