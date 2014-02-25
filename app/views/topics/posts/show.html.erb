@@ -21,6 +21,8 @@
       </div>
     <% end %>
 
+    <h2 class='js-comments-count'><%= @comments.count %> Comments</h2>
+
     <!-- Bloc has this form in comments/comment. -->
     <%= render partial: "posts/comment", collection: @comments %>
   </div>

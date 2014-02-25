@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  respond_to :html, :js
 
   # The 'create' method creates the Comment object after the form is submitted.
   # No 'new' method is required because a new, blank form for each new comment
@@ -29,10 +30,14 @@ class CommentsController < ApplicationController
     authorize! :destroy, @comment, message: "You can only delete comments that you own."
     if @comment.destroy
       flash[:notice] = "Comment was deleted successfully."
-      redirect_to [@topic, @post]
+      # redirect_to [@topic, @post]
     else
       flash[:error] = "There was an error deleting the comment."
-      redirect_to [@topic, @post]
+      # redirect_to [@topic, @post]
+    end
+
+    respond_with(@comment) do |f|
+      f.html { redirect_to [@topic, @post] }
     end
   end
 end
